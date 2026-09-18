@@ -37,7 +37,10 @@ export class ApiError extends Error {
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   if (!API_BASE_URL) {
     throw new ApiError(
-      "API_CONFIG_MISSING: set VITE_API_URL in the production frontend environment.",
+      "API_CONFIG_MISSING: VITE_API_URL is not set. " +
+        "Set it in your Vercel project (Settings -> Environment Variables) " +
+        "to the public URL of the GridWise backend, e.g. " +
+        "VITE_API_URL=https://gridwise-server.vercel.app, then redeploy.",
       "configuration",
     );
   }
