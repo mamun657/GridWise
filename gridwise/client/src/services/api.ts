@@ -8,9 +8,14 @@ import type {
 
 const normalizeBaseUrl = (value: string): string => value.replace(/\/+$/, "");
 
+const isLocalBrowser = ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
 const configuredBaseUrl = import.meta.env.VITE_API_URL?.trim();
+const configuredLocalhost = configuredBaseUrl
+  ? /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::\d+)?\/?$/i.test(configuredBaseUrl)
+  : false;
 export const API_BASE_URL = normalizeBaseUrl(
-  configuredBaseUrl || (import.meta.env.DEV ? "http://localhost:4000" : ""),
+  (configuredBaseUrl && (!configuredLocalhost || isLocalBrowser) ? configuredBaseUrl : "")
+    || (isLocalBrowser ? "http://localhost:4000" : ""),
 );
 
 export class ApiError extends Error {

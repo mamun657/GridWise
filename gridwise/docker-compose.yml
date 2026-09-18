@@ -11,7 +11,7 @@ services:
       PORT: ${PORT:-4000}
       MONGODB_URI: ${MONGODB_URI}
       GROQ_API_KEY: ${GROQ_API_KEY}
-      GROQ_MODEL: ${GROQ_MODEL:-llama-3.1-8b-instant}
+      GROQ_MODEL: ${GROQ_MODEL:-openai/gpt-oss-120b}
       NODE_ENV: production
     ports:
       - "${PORT:-4000}:4000"

@@ -13,7 +13,7 @@ server (Express + TypeScript)
    ├─ /sample-cases     GET    serve public-sample-cases/sample-cases.json
    └─ /health           GET    API liveness + service status
         │
-        ├─ Groq API (llama-3.1-8b-instant by default)      — directive interpretation only
+        ├─ Groq API (openai/gpt-oss-120b by default)       — directive interpretation only
         ├─ glpk.js (LP solver)              — math (deterministic, fast)
         └─ MongoDB Atlas                   — run history (optional, graceful fallback)
 ```
@@ -63,7 +63,7 @@ gridwise/
 | `MONGODB_URI` | no | Atlas connection string. If missing or unreachable, persistence is skipped (warning only). |
 | `MONGODB_DNS_SERVERS` | no | Comma-separated DNS servers for `mongodb+srv` discovery; defaults to `1.1.1.1,8.8.8.8`. |
 | `GROQ_API_KEY` | yes (for LLM) | Groq API key |
-| `GROQ_MODEL` | no | defaults to `llama-3.1-8b-instant` |
+| `GROQ_MODEL` | no | defaults to `openai/gpt-oss-120b` |
 | `GROQ_TIMEOUT_MS` | no | defaults to `20000` |
 
 ## Local development
