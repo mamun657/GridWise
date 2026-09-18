@@ -16,6 +16,14 @@ function tone(s: string | undefined): { tone: StatusTone; label: string; ok: boo
   return { tone: "crit", label: s, ok: false };
 }
 
+function errorTitle(message: string): string {
+  if (message.startsWith("HTTP_404:")) return "Backend endpoint not found";
+  if (message.startsWith("HTTP_")) return "Backend returned an HTTP error";
+  if (message.startsWith("API_TIMEOUT:")) return "Backend request timed out";
+  if (message.startsWith("API_CONFIG_MISSING:")) return "Backend URL is not configured";
+  return "Backend unavailable";
+}
+
 export function StatusPage() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [err, setErr] = useState<string | null>(null);
@@ -49,7 +57,7 @@ export function StatusPage() {
       />
 
       {err && (
-        <AlertCard tone="crit" title="Backend unreachable" description={err} />
+        <AlertCard tone="crit" title={errorTitle(err)} description={err} />
       )}
 
       {!err && (

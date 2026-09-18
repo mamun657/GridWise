@@ -71,7 +71,8 @@ export function OptimizePage() {
   const err = parseError(error);
   const isInfeasible = err?.code === "OPTIMIZATION_FAILED";
   const isGroqFailed = err?.code === "LLM_INTERPRETATION_FAILED";
-  const isNetworkError = err?.code === "HTTP_ERROR";
+  const isNetworkError = err?.code === "BACKEND_UNAVAILABLE" || err?.code === "API_TIMEOUT";
+  const isHttpError = err?.code.startsWith("HTTP_") ?? false;
 
   return (
     <div className="space-y-6">
@@ -200,7 +201,9 @@ export function OptimizePage() {
             isGroqFailed
               ? "Directive interpretation failed"
               : isNetworkError
-                ? "Backend unreachable"
+                ? err?.code === "API_TIMEOUT" ? "Backend request timed out" : "Backend unavailable"
+                : isHttpError
+                  ? err?.code === "HTTP_404" ? "Backend endpoint not found" : "Backend returned an HTTP error"
                 : "Optimization error"
           }
           description={err?.message ?? error}

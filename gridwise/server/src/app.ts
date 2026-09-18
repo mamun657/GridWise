@@ -577,9 +577,22 @@ const swaggerSpec = swaggerJSDoc({
 
 export const buildApp = (): express.Application => {
   const app = express();
+  const allowedOrigins = new Set([
+    "https://grid-wise-q74y.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000",
+  ]);
   app.disable("x-powered-by");
   app.use(helmet());
-  app.use(cors());
+  app.use(cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.has(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Origin is not allowed by GridWise CORS policy"));
+      }
+    },
+  }));
   app.use(express.json({ limit: "256kb" }));
   app.use(morgan("combined"));
 

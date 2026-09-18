@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "../../services/api";
+
 import { Glyph } from "./Icon";
 import { StatusBadge, type StatusTone } from "./StatusBadge";
 
@@ -15,7 +17,7 @@ const items: { id: SidebarRoute; label: string; icon: React.ReactNode; external?
   { id: "optimize", label: "Optimize", icon: <Glyph name="bolt" size={16} /> },
   { id: "samples", label: "Sample cases", icon: <Glyph name="flask" size={16} /> },
   { id: "dispatch", label: "Dispatch", icon: <Glyph name="activity" size={16} /> },
-  { id: "api", label: "API documentation", icon: <Glyph name="doc" size={16} />, external: true, href: "/docs" },
+  { id: "api", label: "API documentation", icon: <Glyph name="doc" size={16} />, external: true, href: `${API_BASE_URL}/docs` },
   { id: "status", label: "System status", icon: <Glyph name="server" size={16} /> },
 ];
 

@@ -18,6 +18,14 @@ function tone(s: string | undefined): { tone: StatusTone; label: string } {
   return { tone: "crit", label: s };
 }
 
+function errorTitle(message: string): string {
+  if (message.startsWith("HTTP_404:")) return "Backend endpoint not found";
+  if (message.startsWith("HTTP_")) return "Backend returned an HTTP error";
+  if (message.startsWith("API_TIMEOUT:")) return "Backend request timed out";
+  if (message.startsWith("API_CONFIG_MISSING:")) return "Backend URL is not configured";
+  return "Backend unavailable";
+}
+
 const isMongoOk = (h: HealthResponse | null) => h?.services?.mongodb === "connected";
 
 export function OverviewPage() {
@@ -57,7 +65,7 @@ export function OverviewPage() {
       />
 
       {healthErr && (
-        <AlertCard tone="crit" title="Backend unreachable" description={healthErr} />
+        <AlertCard tone="crit" title={errorTitle(healthErr)} description={healthErr} />
       )}
 
       <SectionCard title="System Health" subtitle="Strict status semantics - only 'connected' counts MongoDB as available." icon={<Glyph name="server" size={14} />}>
