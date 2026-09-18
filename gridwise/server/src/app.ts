@@ -580,6 +580,7 @@ export const buildApp = (): express.Application => {
   const allowedOrigins = new Set([
     "https://grid-wise-q74y.vercel.app",
     "https://grid-wise-origin.vercel.app",
+    "https://grid-wise-orcin.vercel.app",
     "http://localhost:5173",
     "http://localhost:3000",
   ]);
