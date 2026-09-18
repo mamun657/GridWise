@@ -578,6 +578,7 @@ const swaggerSpec = swaggerJSDoc({
 export const buildApp = (): express.Application => {
   const app = express();
   const allowedOrigins = new Set([
+    "https://grid-wise-phi.vercel.app",
     "https://grid-wise-q74y.vercel.app",
     "https://grid-wise-origin.vercel.app",
     "https://grid-wise-orcin.vercel.app",
