@@ -20,7 +20,7 @@ export const config = {
     .map((server) => server.trim())
     .filter(Boolean),
   groqApiKey: env("GROQ_API_KEY") as string | undefined,
-  groqModel: env("GROQ_MODEL", "llama-3.1-8b-instant") as string,
+  groqModel: env("GROQ_MODEL", "openai/gpt-oss-120b") as string,
   groqUrl: "https://api.groq.com/openai/v1/chat/completions",
   groqTimeoutMs: Number(env("GROQ_TIMEOUT_MS", "20000")),
   groqMaxRetries: Number(env("GROQ_MAX_RETRIES", "2")),
