@@ -19,6 +19,7 @@ function tone(s: string | undefined): { tone: StatusTone; label: string } {
 }
 
 function errorTitle(message: string): string {
+  if (message.startsWith("API_CONFIG_MISSING:")) return "Backend URL not configured";
   if (message.startsWith("HTTP_404:")) return "Backend endpoint not found";
   if (message.startsWith("HTTP_")) return "Backend returned an HTTP error";
   if (message.startsWith("API_TIMEOUT:")) return "Backend request timed out";

@@ -204,6 +204,7 @@ export function OptimizePage() {
                 ? err?.code === "API_TIMEOUT" ? "Backend request timed out" : "Backend unavailable"
                 : isHttpError
                   ? err?.code === "HTTP_404" ? "Backend endpoint not found" : "Backend returned an HTTP error"
+                : err?.code === "API_CONFIG_MISSING" ? "Backend URL not configured"
                 : "Optimization error"
           }
           description={err?.message ?? error}
