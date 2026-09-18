@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "scenario_id": "GW-PUB-001-solar-evening-reserve",
+      "description": "Baseline evening with solar reduction, battery reserve, no-charge and grid cap",
+      "operator_notes": [
+        "Solar output will drop to about 20% from 1 PM to 3 PM.",
+        "Keep at least 120 kWh from 6 PM to 9 PM.",
+        "Do not charge from 2 PM to 5 PM.",
+        "Grid import must stay below 155 kWh from 6 PM to 9 PM.",
+        "The cafeteria menu changes tomorrow."
+      ],
+      "battery": {
+        "capacity_kwh": 400,
+        "initial_energy_kwh": 200,
+        "minimum_energy_kwh": 80,
+        "max_charge_kwh_per_hour": 120,
+        "max_discharge_kwh_per_hour": 120
+      }
+    },
+    {
+      "scenario_id": "GW-PUB-002-weekend-minimal",
+      "description": "Low demand day, no operational notes",
+      "operator_notes": [],
+      "battery": {
+        "capacity_kwh": 300,
+        "initial_energy_kwh": 120,
+        "minimum_energy_kwh": 60,
+        "max_charge_kwh_per_hour": 80,
+        "max_discharge_kwh_per_hour": 80
+      }
+    },
+    {
+      "scenario_id": "GW-PUB-003-cloudy-afternoon",
+      "description": "Afternoon solar reduction + percentage reserve",
+      "operator_notes": [
+        "Cloudy weather, solar output reduced to 30% between 12 PM and 4 PM.",
+        "Maintain battery at least 50% throughout the evening from 5 PM to 10 PM.",
+        "Cafeteria menu has been updated for next week."
+      ],
+      "battery": {
+        "capacity_kwh": 500,
+        "initial_energy_kwh": 250,
+        "minimum_energy_kwh": 50,
+        "max_charge_kwh_per_hour": 150,
+        "max_discharge_kwh_per_hour": 150
+      }
+    },
+    {
+      "scenario_id": "GW-PUB-004-evening-grid-cap",
+      "description": "Strict evening grid cap with battery reserve",
+      "operator_notes": [
+        "Grid import must stay below 100 kWh from 6 PM to 11 PM.",
+        "Battery discharge unavailable from 7 PM to 9 PM."
+      ],
+      "battery": {
+        "capacity_kwh": 350,
+        "initial_energy_kwh": 175,
+        "minimum_energy_kwh": 70,
+        "max_charge_kwh_per_hour": 100,
+        "max_discharge_kwh_per_hour": 100
+      }
+    },
+    {
+      "scenario_id": "GW-PUB-005-high-tariff-window",
+      "description": "Combined directives including no-discharge window",
+      "operator_notes": [
+        "Solar generation drops to 50% from 11 AM to 2 PM.",
+        "Do not discharge from 6 AM to 9 AM.",
+        "Reserve at least 80 kWh between 5 PM and 8 PM.",
+        "Grid cap of 200 kWh between 5 PM and 10 PM."
+      ],
+      "battery": {
+        "capacity_kwh": 300,
+        "initial_energy_kwh": 150,
+        "minimum_energy_kwh": 60,
+        "max_charge_kwh_per_hour": 90,
+        "max_discharge_kwh_per_hour": 90
+      }
+    }
+  ]
+}

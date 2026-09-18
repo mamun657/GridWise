@@ -1,0 +1,11 @@
+.env
+node_modules
+dist
+coverage
+logs
+.DS_Store
+server-out*.txt
+server-err*.txt
+server-tsc.txt
+client/dist
+*.log

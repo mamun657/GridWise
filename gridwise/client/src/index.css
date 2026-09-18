@@ -1,0 +1,104 @@
+@import url("https://rsms.me/inter/inter.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "cv11", "ss01", "ss03";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: #F6F8FB;
+  color: #0B1424;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+  background-clip: padding-box;
+}
+
+@layer components {
+  .gw-card { @apply bg-canvas border border-canvas-border rounded-lg shadow-card; }
+  .gw-card-hover { @apply transition-shadow duration-180 hover:shadow-cardHover; }
+  .gw-label { @apply text-[11px] font-medium uppercase tracking-[0.08em] text-ink-400; }
+  .gw-h1 { @apply text-[22px] font-semibold tracking-tight text-ink-900; }
+  .gw-h2 { @apply text-[16px] font-semibold tracking-tight text-ink-900; }
+  .gw-body { @apply text-[13.5px] text-ink-700; }
+  .gw-muted { @apply text-[13px] text-ink-500; }
+  .gw-mono { @apply font-mono text-[12.5px] tabular-nums text-ink-700; }
+  .gw-divider { @apply h-px w-full bg-canvas-border; }
+  .gw-input {
+    @apply w-full rounded-md border border-canvas-border bg-canvas px-3 py-2 text-[13.5px] text-ink-900
+      placeholder:text-ink-300 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+      disabled:bg-canvas-muted disabled:text-ink-400 transition-colors duration-180;
+  }
+  .gw-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-2 text-[13px] font-medium
+      transition-colors duration-180 disabled:cursor-not-allowed disabled:opacity-55
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  }
+  .gw-btn-primary {
+    @apply gw-btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800
+      focus-visible:ring-brand-500 shadow-card;
+  }
+  .gw-btn-ghost {
+    @apply gw-btn bg-transparent text-ink-500 hover:bg-canvas-muted hover:text-ink-900
+      focus-visible:ring-brand-500;
+  }
+  .gw-btn-outline {
+    @apply gw-btn bg-canvas border border-canvas-border text-ink-700 hover:bg-canvas-muted hover:border-ink-200
+      focus-visible:ring-brand-500;
+  }
+  .gw-pill { @apply inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-medium; }
+  .gw-tabnum { font-variant-numeric: tabular-nums; }
+  .gw-recharts-tooltip {
+    background: #FFFFFF;
+    border: 1px solid #E3E8F0;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.10);
+    padding: 10px 12px;
+    font-size: 12.5px;
+    color: #0B1424;
+  }
+  .gw-table-wrap {
+    @apply overflow-x-auto rounded-md border border-canvas-border;
+  }
+  .gw-table {
+    @apply w-full border-separate text-[12.5px];
+    border-spacing: 0;
+  }
+  .gw-table thead th {
+    @apply sticky top-0 bg-canvas-muted/95 text-[10.5px] font-semibold uppercase tracking-[0.08em] text-ink-500;
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid #E3E8F0;
+  }
+  .gw-table tbody tr {
+    @apply transition-colors duration-180;
+  }
+  .gw-table tbody tr:hover {
+    background: #F6F8FB;
+  }
+  .gw-table tbody td {
+    border-bottom: 1px solid #EEF1F7;
+  }
+  .gw-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
